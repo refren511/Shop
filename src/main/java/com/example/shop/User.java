@@ -12,7 +12,7 @@ public class User {
     public String getLogin() {return login;}
     public String getPassword() {return password;}
 
-    public boolean checkCredentials(String inputLogin, String inputPassword) {
+    /*public boolean checkCredentials(String inputLogin, String inputPassword) {
         return this.login.equals(inputLogin) && this.password.equals(inputPassword);
-    }
+    }*/
 }

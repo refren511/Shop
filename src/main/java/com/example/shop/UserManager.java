@@ -14,9 +14,9 @@ public class UserManager {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(";"); // формат: логин;пароль
+                String[] parts = line.split(";");
                 if (parts.length > 0 && parts[0].equals(login)) {
-                    return true; // Нашли такой логин
+                    return true;
                 }
             }
         } catch (IOException e) {
@@ -27,7 +27,6 @@ public class UserManager {
 
     public static void saveUser(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
-            // Записываем: логин;пароль
             writer.write(user.getLogin() + ";" + user.getPassword());
             writer.newLine();
         } catch (IOException e) {
