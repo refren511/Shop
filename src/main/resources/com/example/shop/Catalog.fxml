@@ -49,9 +49,9 @@
                         </GridPane>
                         <HBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
                             <children>
-                                <Button mnemonicParsing="false" text="Добавить" />
-                                <Button mnemonicParsing="false" text="Изменить" />
-                                <Button mnemonicParsing="false" text="Удалить" />
+                                <Button mnemonicParsing="false" text="Добавить" onAction="#handleNewProduct"/>
+                                <Button mnemonicParsing="false" text="Изменить" onAction="#handleEditProduct" />
+                                <Button mnemonicParsing="false" onAction="#handleDeleteProduct" text="Удалить" />
                             </children>
                         </HBox>
                     </children>

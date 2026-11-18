@@ -1,8 +1,6 @@
 package com.example.shop;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserManager {
     private static final String FILE_NAME = "users.txt";
@@ -27,28 +25,33 @@ public class UserManager {
 
     public static void saveUser(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
-            writer.write(user.getLogin() + ";" + user.getPassword());
+            writer.write(user.getLogin() + ";" + user.getPassword() + ";" + user.getRole());
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static boolean authenticate(String login, String password) {
+    public static User authenticate(String login, String password) {
+        if (login.equals("admin") && password.equals("admin")) {
+            return new User("admin", "admin", "admin");
+        }
+
         File file = new File(FILE_NAME);
-        if (!file.exists()) return false;
+        if (!file.exists()) return null;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
                 if (parts.length == 2 && parts[0].equals(login) && parts[1].equals(password)) {
-                    return true;
+                    String role = (parts.length == 3) ? parts[2] : "client";
+                    return new User(parts[0], parts[1], role);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 }

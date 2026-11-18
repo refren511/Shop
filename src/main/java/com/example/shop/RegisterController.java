@@ -6,9 +6,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
-import java.awt.*;
-
 public class RegisterController {
 
     @FXML private TextField regLoginField;
@@ -36,7 +33,7 @@ public class RegisterController {
             return;
         }
 
-        User newUser = new User(login, password);
+        User newUser = new User(login, password, "client");
         UserManager.saveUser(newUser);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

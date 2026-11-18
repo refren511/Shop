@@ -3,14 +3,17 @@ package com.example.shop;
 public class User {
     private String login;
     private String password;
+    private String role;
 
-    public User(String login, String password){
+    public User(String login, String password, String role){
         this.login = login;
         this.password = password;
+        this.role = role;
     }
 
     public String getLogin() {return login;}
     public String getPassword() {return password;}
+    public String getRole() {return role;}
 
     /*public boolean checkCredentials(String inputLogin, String inputPassword) {
         return this.login.equals(inputLogin) && this.password.equals(inputPassword);
